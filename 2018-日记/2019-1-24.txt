@@ -1,0 +1,36 @@
+《数据处理》
+- 数据可视化
+- 数据获取方式：
+Python : Request.
+Java : HTTPClient(common-http) , Webdriver
+PhantomJS
+Selenium
+WebKit
+
+方法
+逆向工程
+编译原理
+机器学习
+
+HTML解析工具
+libxml2 , XPAth : 除了java都可以用
+HTMLParse: java
+
+正则表达式
+高端数据处理工具： Logstash - JRuby
+
+数据存储：
+Postgresql,特点 ： 
+Window Function
+Function Index索引
+FDW外部数据wrapper，把多种数据封装集成到一起
+XML/Json/HStore
+Memcache
+Redis
+ElasticSearch
+Solr
+
+大数据存储：
+MFS归档、HDFS存储和计算功能，属于离线计算、Hbase结构化（BigTable）,半在线
+
+24种设计模式终结

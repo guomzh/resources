@@ -1,0 +1,11 @@
+工作内容：
+1、今天主要是把项目发布到测试环境，完成了完整的自测和联调
+2、继续了解使用ElasticSearch的一些内容，今天在项目中完成使用es搜索目的地推荐理由，一些es使用关键体会：
+- SearchSourceBuilder.fetchSource设置要查询的字段信息构建搜索和排除条件
+- CollapseBuilder类似去重，针对es索引中的properties字段
+- QueryBuilders.prefixQuery进行字段前缀搜索
+- 排序：FieldSortBuilder构建es排序
+3、给关键接口加监控
+问题：
+1、一般来说接口调用失败次数需要加监控，如果某个接口传入的参数错误导致的异常，即已知的异常输入，这种情况需要统计吗？
+2、明天解决和前端联调中出现的一些bug，跑测试case,以及检查编码不规范问题。

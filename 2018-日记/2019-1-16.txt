@@ -1,0 +1,15 @@
+工作内容
+1、继续完成项目进度，改和前端联调时的bug，使用本地缓存guava存储部分实时性要求不高的搜索数据，提高搜索速度。
+关于guava cache使用有以下几点体会：
+类似ConcurrentMap, 但ConcurrentMap持有元素知道显式地移除
+2、guava cache的回收策略总结：
+  - 按大小回收
+  - 按权重回收，实现CacheBuilder.weigher(Weigher)权重函数
+  - 定时回收expireAfterAccess、expireAfterWrite两种策略
+  - 基于引用的回收：之前了解过java的四种应用类型：强、软、若、虚四种引用类型，gauva中可以使用CacheBuilder.weakKeys()来
+使用弱引用存储键，CacheBuilder.weakValues()使用弱引用存储值，CacheBuilder.softValues()使用软引用存储值，软引用在内存不够时按照最近最少使用的顺序回收，但比较耗性能，一般可以设置缓存大小限定回收来替代它。
+  - 这次在项目中使用了Cache.invalidate(key)来显示地清除缓存项，使用spring的@Scheduled(cron = "0 00 01 * * ?")来定时刷新缓存
+问题与总结：
+1、安装学习使用Jmter工具对项目中写的接口进行响应时间压力测试。
+2、发布项目到机器上和前端联调
+3、实现Comparable，需要实现compareTo方法，然而，需要确保o1.compareTo(o2)==0 时o1.equals(o2) ，否则工程会sonar检查异常，，用匿名内部类实现却不报sonar检查异常

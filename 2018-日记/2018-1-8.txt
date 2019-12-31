@@ -1,0 +1,13 @@
+
+一、今天在线下课程讲了portal发布流程、noah发布流程、回滚流程的学习，大概清楚整个发布流程和搭建测试环境
+二、线上课程《发布&发布系统》的一些笔记：
+1、发布应用系统QDR/QCI:功能是开发同学联调自测、自动化测试及结果搜集（QCI）、测试环境部署或同步线上环境、
+发布结果到生产环境（QDR） 。
+2、WANSHIWU系统 ，提供权限查询，新建job、规则定义，是QDR的web系统
+3、发布流程：git获取代码-qci系统sonar检查-qdr版本管理-qdr下线前检查post_offline-qdr服务下线-qdr上线前
+检查pre_offline-qdr代码部署-qdr上线前检查pre_online-qdr上线前检查post_online-ic上pmo登记
+4、万事屋schema的新建
+5、万事屋job新建
+6、发布系统常见问题：如果发分支要先把master分支merge过来、发布的分支不存在、主线发布回滚被上了回滚锁
+7、发布相关权限申请
+8、回滚

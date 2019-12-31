@@ -1,0 +1,36 @@
+
+1、学习本地缓存guava cache。作为本地缓存，它很好地封装了get和put操作，提供了三种基本的缓存回收方式：
+基于容量回收、定时回收和基于引用回收。定时回收有两种：按照写入时间，最早写入的最
+先回收；按照访问时间，最早访问的最早回收。
+2、memcache和redis学习总结体会：两者都是内存数据库，作为缓存减少数据库压力。区别：
+①redis支持的数据结构更丰富，如String、list、hash、set、zset，而memcache只是kv键值对形式。
+所以用redis支持实现一些权值排序、阻塞队列（我理解是可以用redis阻塞地实现异步生产者消费者模型？
+比如一个场景把model序列化后丢到redis的中，另外的消费者线程可以阻塞地等待获取）等。
+②redis相对更可靠，因为它支持快照和AOF两种方式，而memcache是纯的内存存储，不支持持久化的。
+③memcache提供了cas命令，即"检查并设置"操作，保证多个并发访问操作同一份数据的一致性问题，它仅在当前客户端最后一次取值后，该key 对应的值没有被其他客户端修改的情况下，
+才能够将值写入。感觉redis更适合做数据存储，memcache更适合做缓存，memcache在存储速度方面也会比redis快。
+④在不考虑扩展性和持久性的访问频繁的情况下，只存储kv格式的数据，应该使用memcache，memcache更像是个缓存，而redis更偏向与一个存储数据的系统。
+⑤redis支持高可用集群，支持主从，而memcache需要自己实现类似一致性hash的负载均衡算法才能解决集群的问题，扩展性比较低。
+⑥使用java操作memcache的一些常见操作：连接new MemcachedClient（）、set操作、get操作、add操作、replace 操作、append 操作、
+prepend 操作、CAS 操作、delete操作、自增并输出Incr/Decr 操作
+⑦java中操作redis，使用jedis的一些常见操作： sadd、hset、hget、del、expire过期、scard、srem删除、sismember、exists（key）、
+lpush放list中、jedis.brpop(timeout, key)设置过期时间、jedis.multi()返回redis事务、jedis.zadd(key, score, value)添加权值、
+jedis.zrevrange(key, start, end)、zcard、zscore等等，真的是很多很多，这些主要是使用时熟悉。
+3、线上课程接口测试
+主要解决了怎么进行接口测试的问题，了解到在在qunar最主要使用postman和qunit了吧
+Qunit：
+   - 在qunit.properties中定义被测接口的应用部署的机器及端口
+   - 在service.xml中定义被测接口的唯一标识和被测接口的url
+接口性能测试：
+http_load
+对dubbo接口测试：
+-dubbo命令行
+通过ls  -l 查看provider提供的服务及服务下方法
+通过ls xxxService 查看某个service下的所有方法
+通过ls -l xxxService查看某个service下的method
+通过ps,ps -l 查看dubbo服务的端口信息
+通过ps port 查看服务端口上的连接信息
+通过ps -l port 查看端口上连接的详细信息
+4、开始开发项目qfc目的地推荐理由模块
+
+

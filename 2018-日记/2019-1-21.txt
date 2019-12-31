@@ -1,0 +1,13 @@
+
+工作内容：
+今天的项目终于结束了，
+
+问题与解决：
+1、
+项目之前的代码用        
+StopWatch watch = new StopWatch();
+watch.start();
+//用于统计方法执行时间
+Stopwatch stopwatch = Stopwatch.createStarted();
+
+2、
